@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="UWPToolKitControls.ControlPages.CarouselPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPToolKitControls.ControlPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:my="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+        <Page.DataContext>
+            <local:ViewModel />
+        </Page.DataContext>
+
+
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <my:Carousel x:FieldModifier="public" x:Name="Carousel" IsDoubleTapEnabled="False"  
+                     ItemsSource="{Binding list}"
+                     Margin="21,130,33,37" ItemMargin="20" ItemDepth="200" ItemRotationX="0"
+                     ItemRotationY="0" ItemRotationZ="0" InvertPositive="False"
+                     PointerPressed="Carousel_PointerPressed" 
+                     SelectionChanged="Carousel_SelectionChanged" 
+                     ManipulationStarted="Carousel_ManipulationStarted" >
+                <my:Carousel.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" BorderBrush="{Binding BorderColor}" 
+                                BorderThickness="2">
+                            <Image Width="250" Height="170" Source="{Binding Bild}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </my:Carousel.ItemTemplate>
+            </my:Carousel>
+        </Grid>
+</Page>

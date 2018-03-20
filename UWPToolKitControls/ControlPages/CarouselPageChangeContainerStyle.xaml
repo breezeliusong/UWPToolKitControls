@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="UWPToolKitControls.ControlPages.CarouselPageChangeContainerStyle"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPToolKitControls.ControlPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d">
+
+        <Page.DataContext>
+            <local:ViewModel />
+        </Page.DataContext>
+
+        <Page.Resources>
+            <DataTemplate x:Key="ItemWithBorder">
+                <StackPanel Orientation="Vertical">
+                    <Border BorderBrush="Red"  BorderThickness="2">
+                        <Image Width="250" Height="170" Source="{Binding Bild}"/>
+                    </Border>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ItemWithoutBorder">
+                <StackPanel Orientation="Vertical">
+                    <Border BorderBrush="Transparent"  BorderThickness="2">
+                        <Image Width="250" Height="170" Source="{Binding Bild}"/>
+                    </Border>
+                </StackPanel>
+            </DataTemplate>
+        </Page.Resources>
+
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <my:Carousel x:FieldModifier="public" x:Name="Carousel" IsDoubleTapEnabled="False"  
+                     ItemsSource="{Binding list}" SelectedIndex="0"
+                     Margin="21,130,33,37" ItemMargin="20" ItemDepth="200" ItemRotationX="0"
+                     ItemRotationY="0" ItemRotationZ="0" InvertPositive="False"
+                     SelectionChanged="Carousel_SelectionChanged" 
+                     ItemTemplate="{StaticResource ItemWithoutBorder}">
+                </my:Carousel>
+            </Grid>
+        </Grid>
+</Page>
